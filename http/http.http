@@ -1,0 +1,13 @@
+@url = http://localhost:8080
+
+POST {{url}}/register
+Content-Type: application/json
+
+{
+    "email":"Hello@gmail.com",
+    "password":"1234",
+    "name":"Hello",
+    "surname":"World"
+}
+###
+POST
