@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createUser, loginaccount } from "./users";
+import { allUsers, createUser, getUsers } from "./users";
 type RegisterBody = {
     email: string
     password: string
@@ -24,10 +24,16 @@ export async function register(req: Request, res: Response) {
 
 export async function login(req: Request, res: Response) {
     try {
-        const body: LoginBody = req.body
-        const { email, password } = body
-        const users = await loginaccount(email, password)
-        console.log(users)
+        const users = await allUsers()
+        res.status(200).json({ message: "All Users", users })
+    } catch (error: any) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
+export async function getAllUsers(req: Request, res: Response) {
+    try {
+        res.status(200).json({ message: getUsers })
     } catch (error: any) {
         res.status(500).json({ message: error.message })
     }

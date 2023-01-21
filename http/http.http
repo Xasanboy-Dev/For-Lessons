@@ -10,4 +10,4 @@ Content-Type: application/json
     "surname":"World"
 }
 ###
-POST
+GET {{url}}/login
